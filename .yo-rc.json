@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "volley",
+    "packageName": "co.gov.udistrital.volley",
+    "packageFolder": "co/gov/udistrital/volley",
+    "serverPort": 9090,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": "true",
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": false,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.8.1",
+    "jwtSecretKey": "N2Q0NjExMjhmZDMxOGU1YWQ4ZTM3Y2ViZWJjOWZlYTNjNzQ0ZjI0ODM3YjYzNGY0MzU1NTUwZjRiOWNmN2UxMTI0ZmU5NjUxZDViNDYyY2VmZDE5NDY0ODI2YWZlMjQyOGViN2U3OTc4YzA5ZGYwMGI5ZDhlYmNlZDM5ZGYxOGQ=",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "rfcasallasm",
+  "repository-name": "volley"
+}
