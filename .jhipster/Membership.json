@@ -1,0 +1,35 @@
+{
+    "name": "Membership",
+    "fields": [
+        {
+            "fieldName": "commencementDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fee",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "card",
+            "otherEntityName": "membershipCard",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "membership"
+        }
+    ],
+    "changelogDate": "20190226201616",
+    "entityTableName": "membership",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

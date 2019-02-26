@@ -1,0 +1,40 @@
+{
+    "name": "Invoice",
+    "fields": [
+        {
+            "fieldName": "ammount",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "invoiceDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "fee",
+            "otherEntityName": "membership",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "invoice"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "payment",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "invoice"
+        }
+    ],
+    "changelogDate": "20190226201617",
+    "entityTableName": "invoice",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

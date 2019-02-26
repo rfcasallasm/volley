@@ -1,0 +1,33 @@
+{
+    "name": "LetterBook",
+    "fields": [
+        {
+            "fieldName": "incomingMailNumber",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "incomingMailDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "letters",
+            "otherEntityName": "letter",
+            "otherEntityRelationshipName": "letterBook"
+        }
+    ],
+    "changelogDate": "20190226201614",
+    "entityTableName": "letter_book",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="postalAddress">
+            <h2><span>Postal Address</span> {{postalAddress.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Street</span></dt>
+                <dd>
+                    <span>{{postalAddress.street}}</span>
+                </dd>
+                <dt><span>House Number</span></dt>
+                <dd>
+                    <span>{{postalAddress.houseNumber}}</span>
+                </dd>
+                <dt><span>Zip Code</span></dt>
+                <dd>
+                    <span>{{postalAddress.zipCode}}</span>
+                </dd>
+                <dt><span>Residence</span></dt>
+                <dd>
+                    <span>{{postalAddress.residence}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/postal-address', postalAddress.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

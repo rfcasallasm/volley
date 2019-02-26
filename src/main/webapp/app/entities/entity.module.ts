@@ -4,6 +4,34 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     imports: [
         RouterModule.forChild([
+            {
+                path: 'letter',
+                loadChildren: './letter/letter.module#VolleyLetterModule'
+            },
+            {
+                path: 'postal-address',
+                loadChildren: './postal-address/postal-address.module#VolleyPostalAddressModule'
+            },
+            {
+                path: 'letter-book',
+                loadChildren: './letter-book/letter-book.module#VolleyLetterBookModule'
+            },
+            {
+                path: 'membership-card',
+                loadChildren: './membership-card/membership-card.module#VolleyMembershipCardModule'
+            },
+            {
+                path: 'membership',
+                loadChildren: './membership/membership.module#VolleyMembershipModule'
+            },
+            {
+                path: 'invoice',
+                loadChildren: './invoice/invoice.module#VolleyInvoiceModule'
+            },
+            {
+                path: 'payment',
+                loadChildren: './payment/payment.module#VolleyPaymentModule'
+            }
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])
     ],

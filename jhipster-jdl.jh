@@ -1,0 +1,71 @@
+
+entity Letter {
+	firstname String required,
+    surname String required,
+    birthDate LocalDate,
+    sex Boolean required,
+    telephoneNumber Long
+}
+
+entity PostalAddress {
+	street String required,
+    houseNumber Long required,
+    zipCode String,
+    residence String
+}
+
+relationship OneToOne{
+	Letter{postalAddress} to PostalAddress
+}
+
+entity LetterBook{
+    incomingMailNumber Long required,
+    incomingMailDate LocalDate
+}
+
+relationship OneToMany{
+	LetterBook{letters} to Letter
+}
+
+entity MembershipCard{
+    membershipNumber Long required,
+    commencementDate LocalDate,
+    name String required,
+    birthDate LocalDate required
+}
+
+relationship OneToOne{
+	MembershipCard{postalAddress} to PostalAddress
+}
+
+entity Membership{
+	commencementDate LocalDate,
+    fee Double required
+}
+
+relationship OneToOne{
+	Membership{card} to MembershipCard
+}
+
+entity Invoice{
+	ammount Double required,
+    invoiceDate LocalDate
+}
+
+relationship ManyToOne{
+	Invoice{fee} to Membership
+}
+
+entity Payment{
+	paymentNumber Long required,
+    paymentDate LocalDate,
+    paymentAmount Double required
+}
+
+relationship ManyToOne{
+	Payment to Invoice
+}
+
+paginate all with infinite-scroll
+
+service all with serviceImpl

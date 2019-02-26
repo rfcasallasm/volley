@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-membership-heading">Create or edit a Membership</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!membership.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="membership.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_commencementDate">Commencement Date</label>
+                    <div class="input-group">
+                        <input id="field_commencementDate" type="text" class="form-control" name="commencementDate" ngbDatepicker  #commencementDateDp="ngbDatepicker" [(ngModel)]="membership.commencementDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="commencementDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fee">Fee</label>
+                    <input type="number" class="form-control" name="fee" id="field_fee"
+                        [(ngModel)]="membership.fee" required/>
+                    <div [hidden]="!(editForm.controls.fee?.dirty && editForm.controls.fee?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fee?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.fee?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_card">Card</label>
+                    <select class="form-control" id="field_card" name="card" [(ngModel)]="membership.card">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="membershipCardOption.id === membership.card?.id ? membership.card : membershipCardOption" *ngFor="let membershipCardOption of cards; trackBy: trackMembershipCardById">{{membershipCardOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

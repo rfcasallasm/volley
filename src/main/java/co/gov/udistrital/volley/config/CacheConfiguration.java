@@ -38,6 +38,15 @@ public class CacheConfiguration {
             cm.createCache(co.gov.udistrital.volley.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(co.gov.udistrital.volley.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(co.gov.udistrital.volley.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.Letter.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.PostalAddress.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.LetterBook.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.LetterBook.class.getName() + ".letters", jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.MembershipCard.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.Membership.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.Invoice.class.getName(), jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.Invoice.class.getName() + ".payments", jcacheConfiguration);
+            cm.createCache(co.gov.udistrital.volley.domain.Payment.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

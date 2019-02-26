@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span>Memberships</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-membership" [routerLink]="['/membership/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Membership
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="memberships">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="commencementDate"><span>Commencement Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fee"><span>Fee</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="card.id"><span>Card</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let membership of memberships ;trackBy: trackId">
+                <td><a [routerLink]="['/membership', membership.id, 'view' ]">{{membership.id}}</a></td>
+                <td>{{membership.commencementDate | date:'mediumDate'}}</td>
+                <td>{{membership.fee}}</td>
+                <td>
+                    <div *ngIf="membership.card">
+                        <a [routerLink]="['../membership-card', membership.card?.id, 'view' ]" >{{membership.card?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/membership', membership.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/membership', membership.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'membership', { outlets: { popup: membership.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

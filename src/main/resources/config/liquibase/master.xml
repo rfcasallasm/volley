@@ -5,6 +5,18 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201612_added_entity_Letter.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201613_added_entity_PostalAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201614_added_entity_LetterBook.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201615_added_entity_MembershipCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201616_added_entity_Membership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201617_added_entity_Invoice.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201618_added_entity_Payment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190226201612_added_entity_constraints_Letter.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201615_added_entity_constraints_MembershipCard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201616_added_entity_constraints_Membership.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201617_added_entity_constraints_Invoice.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190226201618_added_entity_constraints_Payment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

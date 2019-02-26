@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Letter.
+    -->
+    <changeSet id="20190226201612-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="postal_address_id"
+                                 baseTableName="letter"
+                                 constraintName="fk_letter_postal_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="postal_address"/>
+
+        <addForeignKeyConstraint baseColumnNames="letter_book_id"
+                                 baseTableName="letter"
+                                 constraintName="fk_letter_letter_book_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="letter_book"/>
+
+    </changeSet>
+</databaseChangeLog>

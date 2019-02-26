@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-letter-heading">Create or edit a Letter</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!letter.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="letter.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_firstname">Firstname</label>
+                    <input type="text" class="form-control" name="firstname" id="field_firstname"
+                        [(ngModel)]="letter.firstname" required/>
+                    <div [hidden]="!(editForm.controls.firstname?.dirty && editForm.controls.firstname?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.firstname?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_surname">Surname</label>
+                    <input type="text" class="form-control" name="surname" id="field_surname"
+                        [(ngModel)]="letter.surname" required/>
+                    <div [hidden]="!(editForm.controls.surname?.dirty && editForm.controls.surname?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.surname?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_birthDate">Birth Date</label>
+                    <div class="input-group">
+                        <input id="field_birthDate" type="text" class="form-control" name="birthDate" ngbDatepicker  #birthDateDp="ngbDatepicker" [(ngModel)]="letter.birthDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sex">Sex</label>
+                    <input type="checkbox" class="form-control" name="sex" id="field_sex"
+                        [(ngModel)]="letter.sex" />
+                    <div [hidden]="!(editForm.controls.sex?.dirty && editForm.controls.sex?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.sex?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telephoneNumber">Telephone Number</label>
+                    <input type="number" class="form-control" name="telephoneNumber" id="field_telephoneNumber"
+                        [(ngModel)]="letter.telephoneNumber" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_postalAddress">Postal Address</label>
+                    <select class="form-control" id="field_postalAddress" name="postalAddress" [(ngModel)]="letter.postalAddress">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="postalAddressOption.id === letter.postalAddress?.id ? letter.postalAddress : postalAddressOption" *ngFor="let postalAddressOption of postaladdresses; trackBy: trackPostalAddressById">{{postalAddressOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_letterBook">Letter Book</label>
+                    <select class="form-control" id="field_letterBook" name="letterBook" [(ngModel)]="letter.letterBook" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="letterBookOption.id === letter.letterBook?.id ? letter.letterBook : letterBookOption" *ngFor="let letterBookOption of letterbooks; trackBy: trackLetterBookById">{{letterBookOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
